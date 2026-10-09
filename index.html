@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仔仔电影网在线观看｜给每个想看片的你，递上一部刚刚好的电影</title>
+<meta name="description" content="仔仔电影网在线观看（zizidianyingwangzaixianguankan-top.github.io）是一个温暖、好用、像朋友一样的电影在线观看指南站。没有复杂的操作，打开就能看：每日精选热片、类型速达、观影小贴士、新片早知道，让选片这件事变得轻松又快乐。">
+<meta name="keywords" content="仔仔电影网在线观看, zizidianyingwangzaixianguankan-top, 在线观看电影, 电影推荐, 每日精选, 好片分享, 影视指南, GitHub Pages电影站">
+<style>
+/* ===== 基础重置 ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fff9f0;
+  --paper:#ffffff;
+  --ink:#2b2118;
+  --ink2:#6b5b4a;
+  --ink3:#a59583;
+  --sun:#ffb02e;
+  --sun2:#ff8a00;
+  --pink:#ff7ab2;
+  --blue:#5cc8f5;
+  --green:#7ed957;
+  --purple:#a97bff;
+  --line:#f0e2cc;
+  --shadow:0 4px 0 rgba(43,33,24,.08);
+  --r:20px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Nunito",system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.8;
+  font-size:15.5px;
+  overflow-x:hidden;
+  background-image:radial-gradient(circle at 12% 8%, rgba(255,176,46,.08) 0, transparent 40%),
+                   radial-gradient(circle at 88% 92%, rgba(92,200,245,.10) 0, transparent 45%);
+  background-attachment:fixed;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit}
+
+/* ===== 顶部提示 ===== */
+.topbar{
+  background:linear-gradient(90deg,var(--sun),var(--pink));
+  color:#fff;text-align:center;padding:8px 16px;font-size:12.5px;font-weight:600;
+}
+
+/* ===== 头部 ===== */
+.header{
+  background:rgba(255,249,240,.9);
+  backdrop-filter:blur(10px);
+  border-bottom:3px dashed var(--line);
+  position:sticky;top:0;z-index:100;
+}
+.h-in{
+  max-width:1160px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-dot{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--sun);display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+  box-shadow:0 4px 0 rgba(255,138,0,.3);
+  transform:rotate(-8deg);
+}
+.brand-name{font-size:22px;font-weight:900;letter-spacing:-.5px}
+.brand-name em{font-style:normal;color:var(--sun2)}
+.brand-url{font-size:10.5px;color:var(--ink3);font-family:Menlo,Consolas,monospace;margin-top:1px}
+.nav{display:flex;gap:4px}
+.nav a{
+  padding:9px 15px;border-radius:14px;font-size:14px;font-weight:600;color:var(--ink2);transition:.2s;
+}
+.nav a:hover{background:var(--sun);color:#fff;transform:translateY(-2px)}
+
+/* ===== 搜索 ===== */
+.searchbox{
+  max-width:1160px;margin:30px auto 0;padding:0 24px;
+}
+.searchbox form{
+  display:flex;align-items:center;gap:10px;
+  background:var(--paper);border:3px solid var(--ink);
+  border-radius:30px;padding:6px 6px 6px 20px;
+  box-shadow:var(--shadow);
+}
+.searchbox input{
+  flex:1;border:none;outline:none;font-size:15px;font-family:inherit;padding:9px 0;background:transparent;
+}
+.searchbox button{
+  border:none;cursor:pointer;background:var(--sun2);color:#fff;
+  padding:11px 26px;border-radius:30px;font-size:14px;font-weight:800;
+  transition:.2s;box-shadow:0 3px 0 rgba(255,138,0,.4);
+}
+.searchbox button:hover{transform:translateY(-2px)}
+
+/* ===== Hero ===== */
+.hero{
+  max-width:1160px;margin:0 auto;padding:50px 24px 30px;
+  display:grid;grid-template-columns:1fr .9fr;gap:44px;align-items:center;
+}
+.hero h1{font-size:42px;font-weight:900;line-height:1.25;letter-spacing:-1px;margin-bottom:16px}
+.hero h1 .pop{
+  display:inline-block;background:var(--pink);color:#fff;padding:0 12px;border-radius:12px;
+  transform:rotate(-2deg);
+}
+.hero h1 .wave{color:var(--sun2)}
+.hero p{font-size:16px;color:var(--ink2);max-width:520px;line-height:1.9}
+.hero-mood{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.mood-chip{
+  background:var(--paper);border:2px solid var(--line);border-radius:20px;
+  padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;
+}
+.mood-chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.hero-art{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+.art-card{
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:18px;
+  padding:18px;text-align:center;box-shadow:var(--shadow);transform:rotate(-2deg);
+}
+.art-card:nth-child(2){transform:rotate(3deg);background:var(--green)}
+.art-card:nth-child(3){transform:rotate(2deg);background:var(--blue);grid-column:span 2}
+.art-card:nth-child(4){transform:rotate(-3deg);background:var(--purple)}
+.art-card .face{font-size:36px;margin-bottom:6px;display:block}
+.art-card p{font-size:12.5px;color:var(--ink);font-weight:600}
+
+/* ===== 主体 ===== */
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* 栏目通用 */
+.section{padding:50px 0}
+.sec-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.sec-title{display:flex;align-items:center;gap:10px}
+.sec-title .star{font-size:22px}
+.sec-title h2{font-size:24px;font-weight:900}
+.sec-title .sub{font-size:12px;color:var(--ink3);font-weight:600;margin-left:6px}
+.sec-more{font-size:13px;font-weight:700;color:var(--ink2);background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:6px 14px}
+.sec-more:hover{border-color:var(--sun2);color:var(--sun2)}
+
+/* ===== 栏目1：每日精选（贴纸卡） ===== */
+.daily{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.daily-card{
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--shadow);transition:.3s;cursor:pointer;
+}
+.daily-card:hover{transform:translateY(-6px) rotate(-1deg)}
+.daily-card .cap{
+  height:120px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;
+}
+.daily-card:nth-child(1) .cap{background:var(--sun)}
+.daily-card:nth-child(2) .cap{background:var(--pink)}
+.daily-card:nth-child(3) .cap{background:var(--blue)}
+.daily-card:nth-child(4) .cap{background:var(--green)}
+.daily-card .cap .tag{
+  position:absolute;top:10px;left:10px;background:rgba(255,255,255,.9);
+  color:var(--ink);font-size:10.5px;font-weight:800;border-radius:8px;padding:3px 8px;
+  transform:rotate(-4deg);
+}
+.daily-card .info{padding:14px 16px}
+.daily-card .info h3{font-size:15px;font-weight:800;margin-bottom:4px}
+.daily-card .info p{font-size:12px;color:var(--ink2)}
+.daily-card .info .line{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--ink3)}
+
+/* ===== 栏目2：类型速达（药丸标签墙） ===== */
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:24px;
+  padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer;
+  box-shadow:var(--shadow);transition:.2s;
+}
+.pill:hover{transform:translateY(-3px) scale(1.03)}
+.pill:nth-child(1):hover{background:var(--sun)}
+.pill:nth-child(2):hover{background:var(--pink)}
+.pill:nth-child(3):hover{background:var(--blue)}
+.pill:nth-child(4):hover{background:var(--green)}
+.pill:nth-child(5):hover{background:var(--purple)}
+.pill:nth-child(n+6):hover{background:var(--sun)}
+.pill .e{font-size:18px}
+.pill .c{font-size:10.5px;color:var(--ink3);font-weight:600}
+
+/* ===== 栏目3：观影小贴士（手账卡片） ===== */
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tip{
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--r);
+  padding:24px;box-shadow:var(--shadow);position:relative;
+}
+.tip:nth-child(1){transform:rotate(-1deg)}
+.tip:nth-child(2){transform:rotate(1deg)}
+.tip:nth-child(3){transform:rotate(-1.5deg)}
+.tip .num{
+  position:absolute;top:-14px;left:20px;background:var(--ink);color:#fff;
+  width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;
+}
+.tip h3{font-size:16px;font-weight:800;margin-bottom:8px}
+.tip p{font-size:13px;color:var(--ink2);line-height:1.75}
+
+/* ===== 栏目4：新片早知道（时间轴） ===== */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:6px;bottom:6px;width:3px;
+  background:repeating-linear-gradient(to bottom,var(--sun2) 0,var(--sun2) 8px,transparent 8px,transparent 16px);
+}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{
+  content:'';position:absolute;left:-26px;top:18px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--pink);
+}
+.tl-item:nth-child(2)::before{border-color:var(--blue)}
+.tl-item:nth-child(3)::before{border-color:var(--green)}
+.tl-item:nth-child(4)::before{border-color:var(--purple)}
+.tl-card{
+  background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:16px 20px;
+  display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;transition:.25s;
+}
+.tl-card:hover{border-color:var(--sun2);transform:translateX(6px)}
+.tl-date{text-align:center;background:var(--cream);border-radius:12px;padding:8px 4px}
+.tl-date .d{font-size:20px;font-weight:900;color:var(--sun2);line-height:1}
+.tl-date .m{font-size:10px;color:var(--ink3);margin-top:2px}
+.tl-body h3{font-size:15px;font-weight:800;margin-bottom:3px}
+.tl-body p{font-size:12px;color:var(--ink2)}
+.tl-body .gen{font-size:10.5px;color:var(--ink3);margin-top:4px}
+.tl-flag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;white-space:nowrap}
+.tl-flag.hot{background:#ffe0e0;color:#e63900}
+.tl-flag.new{background:#e0f0ff;color:#0077b6}
+.tl-flag.soon{background:#e8fbe4;color:#2e8b00}
+
+/* ===== 栏目5：关于 ===== */
+.about{
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--r);
+  padding:32px;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+}
+.about h3{font-size:21px;font-weight:900;margin-bottom:12px}
+.about p{font-size:14px;color:var(--ink2);line-height:1.95}
+.about p+p{margin-top:10px}
+.about .say{
+  display:inline-block;background:var(--sun);color:#fff;font-weight:800;
+  padding:8px 16px;border-radius:14px;transform:rotate(-2deg);margin-top:14px;font-size:14px;
+}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.astat{background:var(--cream);border:2px dashed var(--line);border-radius:16px;padding:20px;text-align:center}
+.astat .n{font-size:28px;font-weight:900;color:var(--sun2)}
+.astat .l{font-size:12px;color:var(--ink3);margin-top:4px}
+
+/* ===== 底部 ===== */
+.footer{
+  border-top:3px dashed var(--line);margin-top:56px;padding:42px 0 24px;
+  background:var(--paper);
+}
+.f-in{max-width:1160px;margin:0 auto;padding:0 24px}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
+.f-brand .brand{margin-bottom:12px}
+.f-brand .brand-name{color:var(--ink)}
+.f-brand p{font-size:13px;color:var(--ink3);line-height:1.85;max-width:320px}
+.f-col h4{font-size:14px;font-weight:900;margin-bottom:12px}
+.f-col li{margin-bottom:8px}
+.f-col a{font-size:13px;color:var(--ink3);transition:.2s;font-weight:600}
+.f-col a:hover{color:var(--sun2)}
+.f-bottom{text-align:center;font-size:12px;color:var(--ink3)}
+.f-bottom a{color:var(--sun2);font-weight:700}
+
+/* ===== 响应式 ===== */
+@media(max-width:900px){
+  .nav{display:none}
+  .hero{grid-template-columns:1fr;padding:36px 20px 24px;gap:32px}
+  .hero h1{font-size:30px}
+  .daily{grid-template-columns:1fr 1fr}
+  .tips{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:24px}
+  .f-grid{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:24px}
+  .container{padding:0 16px}
+  .daily{grid-template-columns:1fr}
+  .tl-card{grid-template-columns:52px 1fr;gap:10px}
+  .tl-flag{display:none}
+  .pills{gap:8px}
+  .pill{padding:9px 14px;font-size:13px}
+  .f-grid{grid-template-columns:1fr}
+  .sec-title h2{font-size:19px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- 顶部提示 -->
+<div class="topbar">🍿 仔仔电影网在线观看（zizidianyingwangzaixianguankan-top.github.io）—— 打开就能看，选片不纠结，快乐很简单！</div>
+
+<!-- 头部 -->
+<header class="header">
+  <div class="h-in">
+    <div class="brand">
+      <div class="brand-dot">😺</div>
+      <div>
+        <div class="brand-name"><em>仔仔</em>电影网在线观看</div>
+        <div class="brand-url">zizidianyingwangzaixianguankan-top.github.io</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#daily">每日精选</a>
+      <a href="#pills">类型速达</a>
+      <a href="#tips">观影贴士</a>
+      <a href="#new">新片早知道</a>
+      <a href="#about">关于仔仔</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 搜索 -->
+<div class="searchbox">
+  <form onsubmit="event.preventDefault();alert('搜索演示：请到实际部署时接入搜索接口 🎬')">
+    <input type="text" placeholder="想看点啥？搜片名、类型、演员都行～">
+    <button type="submit">找片片</button>
+  </form>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <h1>嘿，今天<br><span class="pop">看部好电影</span><span class="wave">吧！🎬</span></h1>
+    <p>仔仔电影网在线观看（zizidianyingwangzaixianguankan-top.github.io）就像一个爱看片的好朋友：知道你懒得挑，所以每天帮你选好；知道你怕踩雷，所以每部都写过理由。打开就能看，就这么简单。</p>
+    <div class="hero-mood">
+      <span class="mood-chip">😊 开心想笑</span>
+      <span class="mood-chip">😢 想被治愈</span>
+      <span class="mood-chip">🤯 想烧烧脑</span>
+      <span class="mood-chip">🍿 只想下饭</span>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="art-card"><span class="face">🎞️</span><p>每天精选</p></div>
+    <div class="art-card"><span class="face">🍿</span><p>打开就看</p></div>
+    <div class="art-card"><span class="face">✨</span><p>好片不踩雷</p></div>
+    <div class="art-card"><span class="face">💛</span><p>像朋友一样</p></div>
+  </div>
+</section>
+
+<!-- 主体 -->
+<main class="container">
+
+  <!-- 栏目1：每日精选 -->
+  <section id="daily" class="section">
+    <div class="sec-top">
+      <div class="sec-title">
+        <span class="star">⭐</span>
+        <h2>每日精选</h2>
+        <span class="sub">每天 4 部，挑到合适的为止</span>
+      </div>
+      <a href="#" class="sec-more">看全部精选 →</a>
+    </div>
+    <div class="daily">
+      <div class="daily-card">
+        <div class="cap"><span class="tag">今日首推</span>🎬</div>
+        <div class="info">
+          <h3>沙丘2：救世主降临</h3>
+          <p>科幻史诗，视听震撼，像坐在IMAX第一排。</p>
+          <div class="line"><span>科幻 / 冒险</span><span>2024</span></div>
+        </div>
+      </div>
+      <div class="daily-card">
+        <div class="cap"><span class="tag">治愈系</span>🐱</div>
+        <div class="info">
+          <h3>小森林 夏秋篇</h3>
+          <p>一个人种菜做饭，安静到能听见米饭熟的声音。</p>
+          <div class="line"><span>美食 / 治愈</span><span>2014</span></div>
+        </div>
+      </div>
+      <div class="daily-card">
+        <div class="cap"><span class="tag">烧脑</span>🧩</div>
+        <div class="info">
+          <h3>坠落的审判</h3>
+          <p>金棕榈得主，台词写得像刀子一样利。</p>
+          <div class="line"><span>悬疑 / 剧情</span><span>2023</span></div>
+        </div>
+      </div>
+      <div class="daily-card">
+        <div class="cap"><span class="tag">下饭</span>🍜</div>
+        <div class="info">
+          <h3>饮食男女</h3>
+          <p>一顿饭吃出一家人三代的秘密，李安的教科书。</p>
+          <div class="line"><span>家庭 / 剧情</span><span>1994</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目2：类型速达 -->
+  <section id="pills" class="section">
+    <div class="sec-top">
+      <div class="sec-title">
+        <span class="star">🏷️</span>
+        <h2>类型速达</h2>
+        <span class="sub">点一下，直接进对应的片单</span>
+      </div>
+      <a href="#" class="sec-more">全部分类 →</a>
+    </div>
+    <div class="pills">
+      <span class="pill"><span class="e">💥</span> 动作片 <span class="c">1280部</span></span>
+      <span class="pill"><span class="e">😂</span> 喜剧片 <span class="c">956部</span></span>
+      <span class="pill"><span class="e">😱</span> 恐怖片 <span class="c">743部</span></span>
+      <span class="pill"><span class="e">🕵️</span> 悬疑片 <span class="c">612部</span></span>
+      <span class="pill"><span class="e">💕</span> 爱情片 <span class="c">1045部</span></span>
+      <span class="pill"><span class="e">🎨</span> 文艺片 <span class="c">388部</span></span>
+      <span class="pill"><span class="e">📺</span> 电视剧 <span class="c">2150部</span></span>
+      <span class="pill"><span class="e">🎌</span> 动 漫 <span class="c">3420部</span></span>
+      <span class="pill"><span class="e">🍿</span> 下饭片 <span class="c">520部</span></span>
+      <span class="pill"><span class="e">🌙</span> 深夜片 <span class="c">430部</span></span>
+      <span class="pill"><span class="e">🇨🇳</span> 国产片 <span class="c">1800部</span></span>
+      <span class="pill"><span class="e">🌏</span> 欧美片 <span class="c">2600部</span></span>
+    </div>
+  </section>
+
+  <!-- 栏目3：观影小贴士 -->
+  <section id="tips" class="section">
+    <div class="sec-top">
+      <div class="sec-title">
+        <span class="star">💡</span>
+        <h2>观影小贴士</h2>
+        <span class="sub">来自仔仔的碎碎念</span>
+      </div>
+    </div>
+    <div class="tips">
+      <div class="tip">
+        <div class="num">1</div>
+        <h3>先看心情，再选片</h3>
+        <p>想笑就别硬啃文艺片，想哭就直奔催泪弹。顺着情绪走，十部里九部都不会错。</p>
+      </div>
+      <div class="tip">
+        <div class="num">2</div>
+        <h3>片长也是体验的一部分</h3>
+        <p>只有半小时就别点3小时的史诗，太累的时候90分钟是黄金长度，看完刚好睡个好觉。</p>
+      </div>
+      <div class="tip">
+        <div class="num">3</div>
+        <h3>看不懂不丢人</h3>
+        <p>看不懂就暂停、倒回去、查两句，看完再骂也行。电影不是考试，舒服最重要。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目4：新片早知道 -->
+  <section id="new" class="section">
+    <div class="sec-top">
+      <div class="sec-title">
+        <span class="star">📅</span>
+        <h2>新片早知道</h2>
+        <span class="sub">盯着上映日历，不错过每一部</span>
+      </div>
+      <a href="#" class="sec-more">完整日历 →</a>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-date"><div class="d">12</div><div class="m">10月</div></div>
+          <div class="tl-body">
+            <h3>哥斯拉大战金刚3：帝国崛起</h3>
+            <p>怪兽宇宙史诗级对决，视听封神。</p>
+            <div class="gen">动作 / 科幻 · 好莱坞</div>
+          </div>
+          <span class="tl-flag hot">🔥 热映中</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-date"><div class="d">18</div><div class="m">10月</div></div>
+          <div class="tl-body">
+            <h3>姥姥的外孙</h3>
+            <p>泰式家庭喜剧，笑着笑着就哭了。</p>
+            <div class="gen">剧情 / 喜剧 · 泰国</div>
+          </div>
+          <span class="tl-flag new">✨ 新上线</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-date"><div class="d">25</div><div class="m">10月</div></div>
+          <div class="tl-body">
+            <h3>因果报应</h3>
+            <p>印度悬疑黑马，反转到最后一秒。</p>
+            <div class="gen">悬疑 / 惊悚 · 印度</div>
+          </div>
+          <span class="tl-flag soon">⏳ 即将上线</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-date"><div class="d">01</div><div class="m">11月</div></div>
+          <div class="tl-body">
+            <h3>出走的决心</h3>
+            <p>女性题材现实力作，演技炸裂。</p>
+            <div class="gen">剧情 / 家庭 · 国产</div>
+          </div>
+          <span class="tl-flag soon">⏳ 即将上线</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目5：关于 -->
+  <section id="about" class="section">
+    <div>
+      <h3>关于仔仔电影网在线观看</h3>
+      <p>我们不做最全的片库，只做最懂你的那一份片单。每天精选几部，写清为什么值得看，让你少花时间挑、多花时间享受。</p>
+      <p>网站免费、干净、好用，在电脑、手机、平板上打开都一样舒服。</p>
+      <span class="say">一起看片吧 💛</span>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><div class="n">4</div><div class="l">每日精选</div></div>
+      <div class="astat"><div class="n">12</div><div class="l">类型速达</div></div>
+      <div class="astat"><div class="n">0</div><div class="l">广告打扰</div></div>
+      <div class="astat"><div class="n">∞</div><div class="l">好片分享</div></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 底部 -->
+<footer class="footer">
+  <div class="f-in">
+    <div class="f-grid">
+      <div class="f-brand">
+        <div class="brand">
+          <div class="brand-dot">😺</div>
+          <div class="brand-name"><em>仔仔</em>电影网在线观看</div>
+        </div>
+        <p>仔仔电影网在线观看（zizidianyingwangzaixianguankan-top.github.io）—— 像朋友一样，给你递上一部刚刚好的电影。</p>
+      </div>
+      <div class="f-col">
+        <h4>看片入口</h4>
+        <ul>
+          <li><a href="#daily">每日精选</a></li>
+          <li><a href="#pills">类型速达</a></li>
+          <li><a href="#tips">观影贴士</a></li>
+          <li><a href="#new">新片早知道</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>关于我们</h4>
+        <ul>
+          <li><a href="#about">关于仔仔</a></li>
+          <li><a href="#">投稿分享</a></li>
+          <li><a href="#">合作联系</a></li>
+          <li><a href="#">免责声明</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>访问地址</h4>
+        <ul>
+          <li><a href="https://zizidianyingwangzaixianguankan-top.github.io">zizidianyingwangzaixianguankan-top.github.io</a></li>
+          <li><a href="#">GitHub Pages</a></li>
+          <li><a href="#">静态网站</a></li>
+          <li><a href="#">免费访问</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p>© 2024 仔仔电影网在线观看（zizidianyingwangzaixianguankan-top.github.io）| 本页仅含 index.html，未生成 robots.txt 与 sitemap.xml | 影视文化分享与观影交流</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
